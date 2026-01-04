@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Đi chơi với anh nhé 💕</title>
+
+<style>
+body {
+  background: #fff3e0;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin-top: 50px;
+}
+
+h1 {
+  color: #e57373;
+}
+
+button {
+  padding: 12px 24px;
+  font-size: 20px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.slide {
+  display: none;
+}
+.slide.active {
+  display: block;
+}
+
+/* YES NO */
+#yes {
+  background: #66bb6a;
+  color: white;
+}
+#no {
+  background: #ef5350;
+  color: white;
+  margin-left: 20px;
+}
+
+/* OPTION HÌNH TRÒN */
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.option {
+  cursor: pointer;
+  text-align: center;
+}
+
+.option img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #f2b6b6;
+  transition: 0.25s;
+}
+
+.option.selected img {
+  border-color: #ff6b6b;
+  transform: scale(1.08);
+}
+
+.option p {
+  margin-top: 8px;
+  color: #d77;
+}
+/* ===== ĐỒNG BỘ TONE CHO INPUT & NÚT ===== */
+input {
+  color: #a9446a;              /* chữ người nhập */
+  background: #fff7f7;         /* nền hồng nhạt */
+  border: 2px solid #f2b6b6;
+}
+
+input::placeholder {
+  color: #d48ca1;              /* chữ gợi ý */
+}
+
+input:focus {
+  border-color: #ff9bb3;
+  box-shadow: 0 0 6px #ffd6df;
+}
+
+/* NÚT TIẾP THEO (KHÔNG ẢNH HƯỞNG YES/NO) */
+.slide button {
+  background: #f7caca;
+  color: #a9446a;
+}
+.option small {
+  display: block;
+  margin-top: 4px;
+  font-size: 13px;
+  color: #d48ca1;   /* hồng nhạt hơn chữ tên */
+}
+
+</style>
+</head>
+
+<body>
+<div id="app"></div>
+
+<script>
+let slideIndex = 0;
+let yesSize = 24;
+let noSize = 24;
+
+const slides = [
+
+/* ===== SLIDE 0: NO NHỎ – YES TO ===== */
+`
+<h1>Em ơi đi chơi với anh nhé 🥺</h1>
+<img src="https://media1.giphy.com/media/K6WIhJ07gwGkIAQfwN/giphy.gif" width="200"><br><br>
+
+<button id="yes">Dạaa 💕</button>
+<button id="no">No way 😭</button>
+`,
+
+/* ===== SLIDE 1 ===== */
+`
+<h1 style="color:#e91e63">Then kiuuu 💖💖💖</h1>
+<img src="https://media4.giphy.com/media/icIr8rk03xQI6NS67S/giphy.gif" width="250"><br><br>
+<button onclick="nextSlide()" style="background:#f7caca">
+Ấn ở đây nè poney 👉
+</button>
+`,
+
+/* ===== SLIDE 2 ===== */
+`
+<h1>Chọn ngày đi chơi nè 🗓️</h1>
+<input type="date"><br><br>
+<button onclick="nextSlide()">Tiếp theo 👉</button>
+`,
+
+/* ===== SLIDE 3: ĐỊA CHỈ ĐÓN ===== */
+`
+<h1 style="color:#e57373">Anh đón em ở đâu nè 💌</h1>
+
+<input 
+  type="text"
+  placeholder="Nhập địa chỉ của em nè..."
+  style="
+    padding:12px 16px;
+    width:260px;
+    border-radius:10px;
+    border:2px solid #f2b6b6;
+    font-size:16px;
+    outline:none;
+  "
+>
+
+<br><br>
+
+<button 
+  onclick="nextSlide()"
+  style="
+    background:#f7caca;
+    color:#a9446a;
+    font-size:18px;
+  "
+>
+Tiếp theo 👉
+</button>
+`,
+
+
+
+/* ===== SLIDE 5 ===== */
+`
+<h1>Quán anh tâm đắc nhưng em chọn nhaaaa ☕</h1>
+<div class="options">
+  <div class="option" onclick="select(this)">
+    <img src="https://scontent.fdad2-1.fna.fbcdn.net/v/t39.30808-6/312946411_551659796962132_7843296854806930926_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeHWBFB5MReaXmwbKas6IO2BHxEHkWZcJCMfEQeRZlwkI_pmE_M7eCBcjyXADXFiQgP3tQLETU3lypKngxtuvC29&_nc_ohc=IE5_pFOcMo4Q7kNvwGOO2l5&_nc_oc=AdmmcZOLuM2f4zc5amfCbJLbzlF9b5rJ9XM-acwgYBU6QTA34Bnb_JJhj5XHDhRT3Q6hVpRzyjwRG5WT_Ix_pwLq&_nc_zt=23&_nc_ht=scontent.fdad2-1.fna&_nc_gid=sHL9SYwm1BLzD6Mf1XPC4A&oh=00_Afq-OXnn8d6gJZJLzEdW9FX38I_4iKhiRsBMH1zBs1mxgg&oe=695E54D2">
+<p>Đi Lạc</p>
+<small>Không gian yên tĩnh, chill nhẹ, nhiều mèo, sách và có xem tarot 🧸</small>
+  </div>
+  <div class="option" onclick="select(this)">
+    <img src="https://scontent.fdad1-4.fna.fbcdn.net/v/t39.30808-6/527905764_641833052271834_7851918488647164970_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHQF68RD6fSvdV2IKR4LaFESv96YOHyTbNK_3pg4fJNsykooTUrorZF_WVIxuF5-NnLVFgk_-GqNa--xnFHaZto&_nc_ohc=u7LbsNvjbLkQ7kNvwHH34rJ&_nc_oc=Adn-0N9setTVHxvj8ViNamIVL42T5CJRgQXqE-spKqC-2-ObLz2JbvI6FIJmKyjuLMAyK3vb_8rXqiCYHbu5r4yd&_nc_zt=23&_nc_ht=scontent.fdad1-4.fna&_nc_gid=UG7tSumM6CXSZ4SaOQokOw&oh=00_AfpdDjSFZbxoGsWX8-xNW8MlXUI9BvnOeLtwKToE0JQiFQ&oe=695E6C79">
+<p>La Yen</p>
+<small>View ban công, ánh sáng mờ ảo, khách đông🌿</small>
+  </div>
+  <div class="option" onclick="select(this)">
+    <img src="https://scontent.fdad1-3.fna.fbcdn.net/v/t39.30808-6/511029297_122137948382653760_5726279638362431668_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEjhuZdyzolkwiuRxTeL8oIKi468llcRhkqLjryWVxGGXwvs-RcL1YT-9j6IQ9t7RbQ2mRi1-rhAuQ8MLE-V-o4&_nc_ohc=yeLgPOu58hUQ7kNvwG1mq5s&_nc_oc=AdnJfvto4I-Vqs1qEaBuGAaC3hmpQD2vQR_WAGXpW1cLUAlnmlL1LQRfI8vY2VtriezER1DjeMLm7zKZP7WOmy1M&_nc_zt=23&_nc_ht=scontent.fdad1-3.fna&_nc_gid=PgWIIrY0m5w7t1mnmZB--A&oh=00_Afrr9TK6YWAq_b0phtfTiiF-IkU9oipgfcnfrrXSGY8Cww&oe=695E7641">
+<p>Đông Đô</p>
+<small>Quán đẹp, nhân viên dễ thương, đông khách và view bức tường cửa kính ☕</small>
+  </div>
+</div>
+<br>
+<button onclick="nextSlide()">Tiếp theo 👉</button>
+`,
+
+/* ===== SLIDE 6 ===== */
+`
+<h1>Nếu có tăng 2 Em muốn chúng ta đi đâuuu 💕</h1>
+<div class="options">
+  <div class="option" onclick="select(this)">
+    <img src="https://i.pinimg.com/736x/b0/bf/23/b0bf232c73bedbd50ecbac7aa855daea.jpg"><p>Xem phim</p>
+  </div>
+  <div class="option" onclick="select(this)">
+    <img src="https://static.vinwonders.com/production/to-tuong-sai-gon.jpg"><p>Tô tượng</p>
+  </div>
+  <div class="option" onclick="select(this)">
+    <img src="https://i.pinimg.com/1200x/b1/9e/db/b19edb5d4f8711fefc9b4b43c259c689.jpg"><p>Ăn vặt</p>
+  </div>
+</div>
+<br>
+<button onclick="nextSlide()">Kết thúc 💖</button>
+`,
+
+/* ===== SLIDE 7 ===== */
+`
+<h1>Hẹn em hôm đó nhaaaa 💕🥰</h1>
+<img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" width="250">
+`
+];
+
+function renderSlide() {
+  document.getElementById("app").innerHTML =
+    `<div class="slide active">${slides[slideIndex]}</div>`;
+
+  if (slideIndex === 0) initYesNo();
+}
+
+function initYesNo() {
+  const yesBtn = document.getElementById("yes");
+  const noBtn = document.getElementById("no");
+
+  yesBtn.onclick = nextSlide;
+
+  noBtn.onclick = () => {
+    yesSize += 6;
+    noSize -= 3;
+
+    yesBtn.style.fontSize = yesSize + "px";
+    yesBtn.style.padding = yesSize + "px";
+
+    if (noSize <= 8) {
+      noBtn.style.display = "none";
+    } else {
+      noBtn.style.fontSize = noSize + "px";
+      noBtn.style.padding = (noSize / 2) + "px";
+    }
+  };
+}
+
+function nextSlide() {
+  slideIndex++;
+  renderSlide();
+}
+
+function select(el) {
+  el.parentElement.querySelectorAll(".option")
+    .forEach(o => o.classList.remove("selected"));
+  el.classList.add("selected");
+}
+
+renderSlide();
+</script>
+</body>
+</html>
