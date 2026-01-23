@@ -26,10 +26,14 @@
 <div id="app"></div>
 <script>
     (function(){ emailjs.init("9ZG74AdaCznDBmeqH"); })();
-
-    let slideIndex = 0; 
-    let yesSize = 20; 
-    let userSelection = { ngay_di: "", dia_chi: "", quan_cafe: "Chưa chọn", tang_2: "Chưa chọn" };
+    let slideIndex = 0;
+    let yesSize = 20;
+    let userSelection = { 
+        ngay_di: "", 
+        dia_chi: "", 
+        quan_cafe: "Chưa chọn", 
+        tang: "Chưa chọn"  // Đổi từ tang_2 thành tang để khớp placeholder {{tang}} trong template
+    };
 
     const slides = [
         /* 0 */ `<h1>Em ơi đi chơi với anh nhé 🥺</h1><img src="https://media1.giphy.com/media/K6WIhJ07gwGkIAQfwN/giphy.gif" width="180"><br><br><button id="yes">Dạaa 💕</button><button id="no">No way 😭</button>`,
@@ -53,26 +57,44 @@
                 </div><br><button onclick="nextSlide()">Tiếp theo 👉</button>`,
         /* 5 */ `<h1>Nếu có tăng 2 Em muốn đi đâuuu 💕</h1>
                 <div class="options">
-                    <div class="option" onclick="handleSelect(this, 'tang_2', 'Tô tượng')"><img src="https://cdn.tgdd.vn/Files/2023/07/25/1539659/thu-gian-cuoi-tuan-voi-6-dia-diem-to-tuong-hut-khach-tai-sai-gon-202307251036403966.jpg"><p>Tô tượng</p></div>
-                    <div class="option" onclick="handleSelect(this, 'tang_2', 'Ăn vặt')"><img src="https://acfood.vn/image/catalog/0443.png"><p>Ăn vặt</p></div>
-                    <div class="option" onclick="handleSelect(this, 'tang_2', 'Xem phim')"><img src="https://nhaccuantonmusic.com/wp-content/uploads/2025/08/Lang-Lang-9-up18.png"><p>Xem phim</p></div>
+                    <div class="option" onclick="handleSelect(this, 'tang', 'Tô tượng')"><img src="https://cdn.tgdd.vn/Files/2023/07/25/1539659/thu-gian-cuoi-tuan-voi-6-dia-diem-to-tuong-hut-khach-tai-sai-gon-202307251036403966.jpg"><p>Tô tượng</p></div>
+                    <div class="option" onclick="handleSelect(this, 'tang', 'Ăn vặt')"><img src="https://acfood.vn/image/catalog/0443.png"><p>Ăn vặt</p></div>
+                    <div class="option" onclick="handleSelect(this, 'tang', 'Xem phim')"><img src="https://nhaccuantonmusic.com/wp-content/uploads/2025/08/Lang-Lang-9-up18.png"><p>Xem phim</p></div>
                 </div><br><button onclick="sendEmail()">Gửi cho anh 💖</button>`,
         /* 6 */ `<div id="finalMessage"><h1>Đang gửi lựa chọn... 💌</h1></div>`
     ];
 
-    function renderSlide() { 
+    function renderSlide() {
         document.getElementById("app").innerHTML = `<div class="slide active">${slides[slideIndex]}</div>`;
         if (slideIndex === 0) {
-            const y = document.getElementById("yes"); const n = document.getElementById("no");
+            const y = document.getElementById("yes"); 
+            const n = document.getElementById("no");
             y.onclick = nextSlide;
-            n.onclick = () => { yesSize += 35; y.style.fontSize = yesSize + "px"; y.style.padding = (yesSize/2) + "px " + yesSize + "px"; };
+            n.onclick = () => { 
+                yesSize += 35; 
+                y.style.fontSize = yesSize + "px"; 
+                y.style.padding = (yesSize/2) + "px " + yesSize + "px"; 
+            };
         }
     }
 
-    function nextSlide() { slideIndex++; renderSlide(); }
-    function saveDate() { userSelection.ngay_di = document.getElementById("dateInput").value; if(!userSelection.ngay_di) return alert("Chọn ngày đã nè!"); nextSlide(); }
-    function saveAddress() { userSelection.dia_chi = document.getElementById("addressInput").value; if(!userSelection.dia_chi) return alert("Nhập địa chỉ đã nè!"); nextSlide(); }
-    
+    function nextSlide() { 
+        slideIndex++; 
+        renderSlide(); 
+    }
+
+    function saveDate() { 
+        userSelection.ngay_di = document.getElementById("dateInput").value; 
+        if(!userSelection.ngay_di) return alert("Chọn ngày đã nè!"); 
+        nextSlide(); 
+    }
+
+    function saveAddress() { 
+        userSelection.dia_chi = document.getElementById("addressInput").value; 
+        if(!userSelection.dia_chi) return alert("Nhập địa chỉ đã nè!"); 
+        nextSlide(); 
+    }
+   
     function handleSelect(el, key, value) {
         el.parentElement.querySelectorAll(".option").forEach(o => o.classList.remove("selected"));
         el.classList.add("selected");
@@ -80,14 +102,23 @@
     }
 
     function sendEmail() {
-        slideIndex++; renderSlide();
+        // Kiểm tra cơ bản trước khi gửi
+        if (userSelection.quan_cafe === "Chưa chọn" || userSelection.tang === "Chưa chọn") {
+            return alert("Em ơi chọn quán và tăng 2 đi đã nè 🥺");
+        }
+
+        slideIndex++; 
+        renderSlide();
+
         emailjs.send("service_q3rxy3r", "7jbvole", userSelection)
         .then(() => {
             document.getElementById("finalMessage").innerHTML = `<h1>Hẹn em hôm đó nhaaaa 💕🥰</h1><img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" width="250">`;
         }, (err) => {
-            alert("Vẫn lỗi rồi! Poney chụp màn hình gửi anh nhé!\nChi tiết: " + err.text);
+            console.error("EmailJS error:", err);  // Để debug trong console
+            alert("Vẫn lỗi rồi poney ơi! Chụp màn hình gửi anh nhé!\nChi tiết: " + (err.status || 'unknown') + " - " + (err.text || err.message || 'No detail'));
         });
     }
+
     renderSlide();
 </script>
 </body>
