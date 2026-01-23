@@ -13,11 +13,10 @@ button { padding: 12px 24px; font-size: 20px; border: none; border-radius: 12px;
 #yes { background: #66bb6a; color: white; position: relative; z-index: 100; }
 #no { background: #ef5350; color: white; margin-left: 20px; }
 .options { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 20px; }
-.option { cursor: pointer; text-align: center; width: 160px; border: 3px solid transparent; border-radius: 15px; padding: 10px; }
+.option { cursor: pointer; text-align: center; width: 160px; }
 .option img { width: 130px; height: 130px; border-radius: 50%; object-fit: cover; border: 5px solid #f2b6b6; }
-.option.selected { border-color: #ff6b6b; background: #ffebee; }
 .option p { margin: 8px 0 2px 0; color: #d77; font-weight: bold; }
-.option small { display: block; font-size: 12px; color: #d48ca1; line-height: 1.3; }
+.option small { display: block; font-size: 12px; color: #d48ca1; line-height: 1.3; padding: 0 5px; }
 input { color: #a9446a; background: #fff7f7; border: 2px solid #f2b6b6; padding:12px; width:260px; border-radius:10px; font-size:16px; outline:none; }
 .slide button:not(#yes):not(#no) { background: #f7caca; color: #a9446a; margin-top: 20px;}
 </style>
@@ -32,11 +31,11 @@ let yesSize = 20;
 let userSelection = { ngay_di: "", dia_chi: "", quan_cafe: "Chưa chọn", tang_2: "Chưa chọn" };
 
 const slides = [
-/* 0 */ `<h1>Em ơi đi chơi với anh nhé 🥺</h1><img src="https://media1.giphy.com/media/K6WIhJ07gwGkIAQfwN/giphy.gif" width="180"><br><br><button id="yes">Dạaa 💕</button><button id="no">No way 😭</button>`,
-/* 1 */ `<h1>Then kiuuu 💖💖💖</h1><img src="https://media4.giphy.com/media/icIr8rk03xQI6NS67S/giphy.gif" width="200"><br><br><button onclick="nextSlide()">Ấn ở đây nè poney 👉</button>`,
-/* 2 */ `<h1>Chọn ngày đi chơi nè 🗓️</h1><input type="date" id="dateInput"><br><br><button onclick="saveDate()">Tiếp theo 👉</button>`,
-/* 3 */ `<h1>Anh đón em ở đâu nè 💌</h1><input type="text" id="addressInput" placeholder="Nhập địa chỉ của em nè..."><br><br><button onclick="saveAddress()">Tiếp theo 👉</button>`,
-/* 4 */ `<h1>Quán anh tâm đắc nhưng em chọn nha ☕</h1>
+/* 0 Lời mời */ `<h1>Em ơi đi chơi với anh nhé 🥺</h1><img src="https://media1.giphy.com/media/K6WIhJ07gwGkIAQfwN/giphy.gif" width="180"><br><br><button id="yes">Dạaa 💕</button><button id="no">No way 😭</button>`,
+/* 1 Then kiu */ `<h1>Then kiuuu 💖💖💖</h1><img src="https://media4.giphy.com/media/icIr8rk03xQI6NS67S/giphy.gif" width="200"><br><br><button onclick="nextSlide()">Ấn ở đây nè poney 👉</button>`,
+/* 2 Ngày */ `<h1>Chọn ngày đi chơi nè 🗓️</h1><input type="date" id="dateInput"><br><br><button onclick="saveDate()">Tiếp theo 👉</button>`,
+/* 3 Địa chỉ */ `<h1>Anh đón em ở đâu nè 💌</h1><input type="text" id="addressInput" placeholder="Nhập địa chỉ của em nè..."><br><br><button onclick="saveAddress()">Tiếp theo 👉</button>`,
+/* 4 Cafe có ghi chú */ `<h1>Quán anh tâm đắc nhưng em chọn nha ☕</h1>
 <div class="options">
     <div class="option" onclick="select(this, 'quan_cafe', 'Đi Lạc')">
         <img src="https://scontent.fdad3-6.fna.fbcdn.net/v/t39.30808-6/312946411_551659796962132_7843296854806930926_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&oh=00_AfqZDnbm6r4OYe08YwrxRG7h4eIrI3rlsHckPxqDD_ZfDg&oe=697993D2">
@@ -54,13 +53,13 @@ const slides = [
         <small>Quán đẹp, đông khách và view cửa kính ☕</small>
     </div>
 </div><br><button onclick="nextSlide()">Tiếp theo 👉</button>`,
-/* 5 */ `<h1>Nếu có tăng 2 Em muốn đi đâuuu 💕</h1>
+/* 5 Tăng 2 */ `<h1>Nếu có tăng 2 Em muốn đi đâuuu 💕</h1>
 <div class="options">
-    <div class="option" onclick="select(this, 'tang_2', 'Tô tượng')"><img src="https://cdn.tgdd.vn/Files/2023/07/25/1539659/thu-gian-cuoi-tuan-voi-6-dia-diem-to-tuong-hut-khach-tai-sai-gon-202307251036403966.jpg"><p>Tô tượng</p></div>
-    <div class="option" onclick="select(this, 'tang_2', 'Ăn vặt')"><img src="https://acfood.vn/image/catalog/0443.png"><p>Ăn vặt</p></div>
-    <div class="option" onclick="select(this, 'tang_2', 'Xem phim')"><img src="https://nhaccuantonmusic.com/wp-content/uploads/2025/08/Lang-Lang-9-up18.png"><p>Xem phim</p></div>
+    <div class="option" onclick="select(this, 'tang_2', 'Tô tượng')"><img src="https://cdn.tgdd.vn/Files/2023/07/25/1539659/thu-gian-cuoi-tuan-voi-6-dia-diem-to-tuong-hut-khach-tai-sai-gon-202307251036403966.jpg" width="130"><p>Tô tượng</p></div>
+    <div class="option" onclick="select(this, 'tang_2', 'Ăn vặt')"><img src="https://acfood.vn/image/catalog/0443.png" width="130"><p>Ăn vặt</p></div>
+    <div class="option" onclick="select(this, 'tang_2', 'Xem phim')"><img src="https://nhaccuantonmusic.com/wp-content/uploads/2025/08/Lang-Lang-9-up18.png" width="130"><p>Xem phim</p></div>
 </div><br><button onclick="sendEmail()">Gửi cho anh 💖</button>`,
-/* 6 */ `<div id="finalMessage"><h1>Đang gửi lựa chọn... 💌</h1></div>`
+/* 6 Kết thúc */ `<div id="finalMessage"><h1>Đang gửi lựa chọn... 💌</h1></div>`
 ];
 
 function renderSlide() { 
