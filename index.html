@@ -39,4 +39,56 @@
         /* 4 */ `<h1>Quán anh tâm đắc nhưng em chọn nha ☕</h1>
                 <div class="options">
                     <div class="option" onclick="handleSelect(this, 'quan_cafe', 'Đi Lạc')">
-                        <img src="https://s
+                        <img src="https://scontent.fdad3-6.fna.fbcdn.net/v/t39.30808-6/312946411_551659796962132_7843296854806930926_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&oh=00_AfqZDnbm6r4OYe08YwrxRG7h4eIrI3rlsHckPxqDD_ZfDg&oe=697993D2">
+                        <p>Đi Lạc</p><small>Yên tĩnh, nhiều mèo, có xem tarot 🧸</small>
+                    </div>
+                    <div class="option" onclick="handleSelect(this, 'quan_cafe', 'La Yen')">
+                        <img src="https://scontent.fdad1-4.fna.fbcdn.net/v/t39.30808-6/527905764_641833052271834_7851918488647164970_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=833d8c&oh=00_AfrUgW_L348OM8Sy9loCOvJtdmP34F6pvJMq7P3Eti4Klg&oe=695DC3B9">
+                        <p>La Yen</p><small>View ban công, ánh sáng mờ ảo 🌿</small>
+                    </div>
+                    <div class="option" onclick="handleSelect(this, 'quan_cafe', 'Đông Đô')">
+                        <img src="https://scontent.fdad1-3.fna.fbcdn.net/v/t39.30808-6/511029297_122137948382653760_5726279638362431668_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=127cfc&oh=00_AfpsVneJYHe5QT93qt5D1NZymJmKkuX3m15BQyI-cqFrEA&oe=695DCD81">
+                        <p>Đông Đô</p><small>Quán đẹp, view cửa kính ☕</small>
+                    </div>
+                </div><br><button onclick="nextSlide()">Tiếp theo 👉</button>`,
+        /* 5 */ `<h1>Nếu có tăng 2 Em muốn đi đâuuu 💕</h1>
+                <div class="options">
+                    <div class="option" onclick="handleSelect(this, 'tang_2', 'Tô tượng')"><img src="https://cdn.tgdd.vn/Files/2023/07/25/1539659/thu-gian-cuoi-tuan-voi-6-dia-diem-to-tuong-hut-khach-tai-sai-gon-202307251036403966.jpg"><p>Tô tượng</p></div>
+                    <div class="option" onclick="handleSelect(this, 'tang_2', 'Ăn vặt')"><img src="https://acfood.vn/image/catalog/0443.png"><p>Ăn vặt</p></div>
+                    <div class="option" onclick="handleSelect(this, 'tang_2', 'Xem phim')"><img src="https://nhaccuantonmusic.com/wp-content/uploads/2025/08/Lang-Lang-9-up18.png"><p>Xem phim</p></div>
+                </div><br><button onclick="sendEmail()">Gửi cho anh 💖</button>`,
+        /* 6 */ `<div id="finalMessage"><h1>Đang gửi lựa chọn... 💌</h1></div>`
+    ];
+
+    function renderSlide() { 
+        document.getElementById("app").innerHTML = `<div class="slide active">${slides[slideIndex]}</div>`;
+        if (slideIndex === 0) {
+            const y = document.getElementById("yes"); const n = document.getElementById("no");
+            y.onclick = nextSlide;
+            n.onclick = () => { yesSize += 35; y.style.fontSize = yesSize + "px"; y.style.padding = (yesSize/2) + "px " + yesSize + "px"; };
+        }
+    }
+    function nextSlide() { slideIndex++; renderSlide(); }
+    function saveDate() { userSelection.ngay_di = document.getElementById("dateInput").value; if(!userSelection.ngay_di) return alert("Chọn ngày đã nè!"); nextSlide(); }
+    function saveAddress() { userSelection.dia_chi = document.getElementById("addressInput").value; if(!userSelection.dia_chi) return alert("Nhập địa chỉ đã nè!"); nextSlide(); }
+    
+    function handleSelect(el, key, value) {
+        const options = el.parentElement.querySelectorAll(".option");
+        options.forEach(o => o.classList.remove("selected"));
+        el.classList.add("selected");
+        userSelection[key] = value;
+    }
+
+    function sendEmail() {
+        slideIndex++; renderSlide();
+        emailjs.send("service_q3rxy3r", "template_tuprd16", userSelection)
+        .then(() => {
+            document.getElementById("finalMessage").innerHTML = `<h1>Hẹn em hôm đó nhaaaa 💕🥰</h1><img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" width="250">`;
+        }, (err) => {
+            alert("Lỗi: " + err.text);
+        });
+    }
+    renderSlide();
+</script>
+</body>
+</html>
