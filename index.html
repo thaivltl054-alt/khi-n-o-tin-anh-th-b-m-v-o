@@ -32,14 +32,14 @@
     let userSelection = { ngay_di: "", dia_chi: "", quan_cafe: "Chưa chọn", tang_2: "Chưa chọn" };
 
     const slides = [
-        /* 0 */ `<h1>Em ơi đi chơi với anh nhé Poney 🥺</h1><img src="https://media1.giphy.com/media/K6WIhJ07gwGkIAQfwN/giphy.gif" width="180"><br><br><button id="yes">Dạaa 💕</button><button id="no">No way 😭</button>`,
+        /* 0 */ `<h1>Em ơi đi chơi với anh nhé 🥺</h1><img src="https://media1.giphy.com/media/K6WIhJ07gwGkIAQfwN/giphy.gif" width="180"><br><br><button id="yes">Dạaa 💕</button><button id="no">No way 😭</button>`,
         /* 1 */ `<h1>Then kiuuu 💖💖💖</h1><img src="https://media4.giphy.com/media/icIr8rk03xQI6NS67S/giphy.gif" width="200"><br><br><button onclick="nextSlide()">Ấn ở đây nè poney 👉</button>`,
         /* 2 */ `<h1>Chọn ngày đi chơi nè 🗓️</h1><input type="date" id="dateInput"><br><br><button onclick="saveDate()">Tiếp theo 👉</button>`,
         /* 3 */ `<h1>Anh đón em ở đâu nè 💌</h1><input type="text" id="addressInput" placeholder="Nhập địa chỉ của em nè..."><br><br><button onclick="saveAddress()">Tiếp theo 👉</button>`,
         /* 4 */ `<h1>Quán anh tâm đắc nhưng em chọn nha ☕</h1>
                 <div class="options">
                     <div class="option" onclick="handleSelect(this, 'quan_cafe', 'Đi Lạc')">
-                        <img src="https://scontent.fdad3-4.fna.fbcdn.net/v/t39.30808-6/312946411_551659796962132_7843296854806930926_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeHWBFB5MReaXmwbKas6IO2BHxEHkWZcJCMfEQeRZlwkI_pmE_M7eCBcjyXADXFiQgP3tQLETU3lypKngxtuvC29&_nc_ohc=a3L-RqECPeQQ7kNvwF7jaWa&_nc_oc=Adly3L71Yu6rrhj4XHS0iW05_ZC1yQ8Lec50H4-NleZ5Y4cnjp5oXxGFca7nbqY5IE_Ss8QGYni0azwiTT9GSJJz&_nc_zt=23&_nc_ht=scontent.fdad3-4.fna&_nc_gid=YkckuMF3gEFPV-yDvKqDpw&oh=00_Afrj9HPviZuLD1nAkdTK5NHdiT8Pci5bavPq0nJiGB8c6A&oe=697A74D2">
+                        <img src="https://scontent.fdad3-4.fna.fbcdn.net/v/t39.30808-6/312946411_551659796962132_7843296854806930926_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeHWBFB5MReaXmwbKas6IO2BHxEHkWZcJCMfEQeRZlwkI_pmE_M7eCBcjyXADXFiQgP3tQLETU3lypKngxtuvC29&_nc_ohc=5hUzTTvVd0wQ7kNvwEtUuBj&_nc_oc=Adl1R14i8bgRNPQcvGmR7_-ATG4GwNy7fL4nvI-Wuh-AQTv5aAyf894gzGSj1gXoUCln7570t5RkIktnFttnvX-T&_nc_zt=23&_nc_ht=scontent.fdad3-4.fna&_nc_gid=5Vi9xLX6y3RhwDPXe5rhxg&oh=00_AftnEazt5iGG9x0UBu5hRs2BoSp2ke_v9rr5-bZ3drxuxA&oe=69865252">
                         <p>Đi Lạc</p><small>Yên tĩnh, nhiều mèo, có xem tarot 🧸</small>
                     </div>
                     <div class="option" onclick="handleSelect(this, 'quan_cafe', 'La Yen')">
@@ -53,7 +53,7 @@
                 </div><br><button onclick="nextSlide()">Tiếp theo 👉</button>`,
         /* 5 */ `<h1>Nếu có tăng 2 Em muốn đi đâuuu 💕</h1>
                 <div class="options">
-                    <div class="option" onclick="handleSelect(this, 'tang_2', 'Tô tượng')"><img src="https://cdn.tgdd.vn/Files/2023/07/25/1539659/thu-gian-cuoi-tuan-voi-6-dia-diem-to-tuong-hut-khach-tai-sai-gon-202307251036403966.jpg"><p>Tô tượng</p></div>
+                    <div class="option" onclick="handleSelect(this, 'tang_2', 'Photobooth')"><img src="https://ibb.co/m1rbkv4"><p>Tô tượng</p></div>
                     <div class="option" onclick="handleSelect(this, 'tang_2', 'Ăn vặt')"><img src="https://acfood.vn/image/catalog/0443.png"><p>Ăn vặt</p></div>
                     <div class="option" onclick="handleSelect(this, 'tang_2', 'Xem phim')"><img src="https://nhaccuantonmusic.com/wp-content/uploads/2025/08/Lang-Lang-9-up18.png"><p>Xem phim</p></div>
                 </div><br><button onclick="sendEmail()">Gửi cho anh 💖</button>`,
