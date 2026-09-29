@@ -37,24 +37,50 @@
         /* 2 */ `<h1>Chọn ngày đi chơi nè 🗓️</h1><input type="date" id="dateInput"><br><br><button onclick="saveDate()">Tiếp theo 👉</button>`,
         /* 3 */ `<h1>Anh đón em ở đâu nè 💌</h1><input type="text" id="addressInput" placeholder="Nhập địa chỉ của em nè..."><br><br><button onclick="saveAddress()">Tiếp theo 👉</button>`,
         /* 4 */ `<h1>Quán anh tâm đắc nhưng em chọn nha ☕</h1>
-                <div class="options">
-                    <div class="option" onclick="handleSelect(this, 'quan_cafe', 'Đi Lạc')">
-                        <img src="https://scontent.fhan14-1.fna.fbcdn.net/v/t39.30808-6/312946411_551659796962132_7843296854806930926_n.jpg?stp=dst-jpg_tt6&cstp=mx960x960&ctp=s960x960&_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeHWBFB5MReaXmwbKas6IO2BHxEHkWZcJCMfEQeRZlwkI_pmE_M7eCBcjyXADXFiQgP3tQLETU3lypKngxtuvC29&_nc_ohc=078kJZ-XH-MQ7kNvwGgJwOY&_nc_oc=AdpggiViekl7o4IiyCI-sxcpn5yycGvXrYRNWhLppzy4Gdv4SJw_FC8vAPLQkjY1oJUV2rvlbSS7uboVFU9ubP9F&_nc_zt=23&_nc_ht=scontent.fhan14-1.fna&_nc_gid=lYaFhMiwc7kKBaZiztSkoQ&_nc_ss=7b2a8&oh=00_AQMmfi1AHn8oZHG-pV29Lg82PdA8ycmw2YNhRtY1FbVmsQ&oe=6AC1A112">
-                        <p>Đi Lạc</p><small>Vibe chill chill hơi chậm và buồn <a href="https://www.tiktok.com/@thanhtu_75/video/7578368909384879381?is_from_webapp=1&sender_device=pc" target="_blank" onclick="event.stopPropagation()" style="position: relative; z-index: 10;color: #d62828; text-decoration: underline;">Xem clip 🎬</a></small>
-                    </div>
-                    <div class="option" onclick="handleSelect(this, 'quan_cafe', 'La Yen')">
-                        <img src="https://scontent.fhan14-5.fna.fbcdn.net/v/t39.30808-6/448335801_342590278862781_6983046210027200810_n.jpg?stp=dst-jpg_tt6&cstp=mx1654x1654&ctp=s1654x1654&_nc_cat=104&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeF2YfYWY89YyzonsRfaH-4oQsTjgNQo4UJCxOOA1CjhQlCvthbC0OC0BoXZwXSDHVh9xWCC8HtGnc9C4-r76_I3&_nc_ohc=Y5D6rzOnibAQ7kNvwFqHkcF&_nc_oc=AdrP0xguB7LtmrGHJEmZfZms3WsD3Ip6zNhXayluAj9VmmFlTYBlohfmboVl_8ASMO0S2W-a9fQIOBMTC-IP3f7k&_nc_zt=23&_nc_ht=scontent.fhan14-5.fna&_nc_gid=5vFW2mDi-iZTAT-bz18I6g&_nc_ss=7b2a8&oh=00_AQMEoGolIjywu48ERl43oNSkMI6fG0kbZYuw1KdhLx2Sdg&oe=6AC1A973">
-                        <p>La Yen</p><small>Nhiều đánh giá tốt nhưng anh chưa đi thử <a href="https://www.tiktok.com/@chuthudanang/video/7567712294415666453?is_from_webapp=1&sender_device=pc" target="_blank" onclick="event.stopPropagation()" style="position: relative; z-index: 10;color: #d62828; text-decoration: underline;">Xem clip 🎬</a></small>
-                    </div>
-                    <div class="option" onclick="handleSelect(this, 'quan_cafe', 'Miền dâu dại')">
-                        <img src="https://scontent.fhan14-5.fna.fbcdn.net/v/t39.30808-6/687935345_942566021962787_7686991622432254148_n.jpg?stp=dst-jpg_tt6&cstp=mx1254x1254&ctp=s1254x1254&_nc_cat=109&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeEIUN4wzwP0jgsPCgRl8943OpLKVc1FFp06kspVzUUWnVtqQ7AL0dpjYFEa3Qe3VeCSxM19rdqsV6tjfwtdm54b&_nc_ohc=b0FOUgmtvfkQ7kNvwER44jG&_nc_oc=Adqk7TAavmH3i8zUsKnwTcWO51yx3rvBdN93nqgsvs85YktHtZshQ19c6-MREJFa5HjyKd85xrooWndgKRwzkLvy&_nc_zt=23&_nc_ht=scontent.fhan14-5.fna&_nc_gid=G3m6DLoyi5qnGzKVwVThhQ&_nc_ss=7b2a8&oh=00_AQNsNuCThaRn8UxYsAYT-HMeXBbLiPJK0XRcxwZXhW6ciw&oe=6AC1BDD4">
-                        <p>Miền dâu dại</p><small>Quán khá chill nhiều sách nhiều mèo<a href="https://www.tiktok.com/@haydithongdong/video/7663163731701976340?is_from_webapp=1&sender_device=pc" target="_blank" onclick="event.stopPropagation()" style="position: relative; z-index: 10;color: #d62828; text-decoration: underline;">Xem clip 🎬</a></small>
-                        </div>
-                    <div class="option" onclick="handleSelect(this, 'quan_cafe', 'A-Kopi')">
-                        <img src="https://scontent.fhan14-1.fna.fbcdn.net/v/t39.30808-6/661003297_122244697256127491_3492561266808767536_n.jpg?stp=cp6_dst-jpg_tt6&cstp=mx1080x1080&ctp=s1080x1080&_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeH48yDyv4c57zBDsdqzmCpFOSFfb7M-zgA5IV9vsz7OAAoM5N_gjKZpeaTd3nQmQvIxY-cF4IhlUecOiu5V199F&_nc_ohc=J8u6tvKfWbwQ7kNvwHftg7T&_nc_oc=Ado5rkLAYxsIrUnhtw7F52zx52gyf0kM6zWwQ5GfvjwOR9elkRnizXelIDyygShaTvBIUjyni-EeIg4bv7iK72K2&_nc_zt=23&_nc_ht=scontent.fhan14-1.fna&_nc_gid=ACR8EMY-g3p37TW8vAsuqw&_nc_ss=7b2a8&oh=00_AQOI5crBbMpp5SbHICbQ1ODNThjI-M5xyPQDDnqj3vQGxQ&oe=6AC1C06D">
-                        <p>A-Kopi</p><small>Quán đẹp nhưng đông khách và anh cũng chưa đi thử<a href="https://www.tiktok.com/@ig_ttlthuong/video/7333582853793516808?is_from_webapp=1&sender_device=pc" target="_blank" onclick="event.stopPropagation()" style="position: relative; z-index: 10;color: #d62828; text-decoration: underline;">Xem clip 🎬</a></small>
-                    </div>
-                </div><br><button onclick="nextSlide()">Tiếp theo 👉</button>`,
+               <div class="options">
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;">
+        <!-- Quán 1: Đi Lạc -->
+        <div style="text-align: center;">
+            <div class="option" onclick="handleSelect(this, 'quan_cafe', 'Đi Lạc')">
+                <img src="https://scontent.fhan14-1.fna.fbcdn.net/v/t39.30808-6/312946411_551659796962132_7843296854806930926_n.jpg?stp=dst-jpg_tt6&cstp=mx960x960&ctp=s960x960&_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeF1xX" style="width:100px; height:100px; border-radius:50%; object-fit:cover;">
+                <p>Đi Lạc</p>
+                <small>Vibe chill chill hơi chậm và buồn</small>
+            </div>
+            <a href="https://www.tiktok.com/@thanhtu_75/video/7578368909384879381" target="_blank" style="display:inline-block; margin-top:5px; color:#d62828; font-weight:bold; text-decoration:underline;">Xem clip 🎬</a>
+        </div>
+
+        <!-- Quán 2: La Yen -->
+        <div style="text-align: center;">
+            <div class="option" onclick="handleSelect(this, 'quan_cafe', 'La Yen')">
+                <img src="https://scontent.fhan14-5.fna.fbcdn.net/v/t39.30808-6/448335801_342590278862781_6983046210027200810_n.jpg?stp=dst-jpg_tt6&cstp=mx1654x1654&cstp=s1654x1654&_nc_cat=104&ccb=1-7&_nc_sid=6ee11a" style="width:100px; height:100px; border-radius:50%; object-fit:cover;">
+                <p>La Yen</p>
+                <small>Nhà nhiều đánh giá tốt nhưng anh chưa đi thử</small>
+            </div>
+            <a href="https://www.tiktok.com/@chuthudanang/video/7567712294415666453" target="_blank" style="display:inline-block; margin-top:5px; color:#d62828; font-weight:bold; text-decoration:underline;">Xem clip 🎬</a>
+        </div>
+
+        <!-- Quán 3: Miền dâu dại -->
+        <div style="text-align: center;">
+            <div class="option" onclick="handleSelect(this, 'quan_cafe', 'Miền dâu dại')">
+                <img src="https://scontent.fhan14-5.fna.fbcdn.net/v/t39.30808-6/687935345_942566021962787_7686991622432254148_n.jpg?stp=dst-jpg_tt6&cstp=mx1254x1254&cstp=s1254x1254&_nc_cat=109&ccb=1-7&_nc_sid=6ee11a" style="width:100px; height:100px; border-radius:50%; object-fit:cover;">
+                <p>Miền dâu dại</p>
+                <small>Quán khá chill nhiều sách nhiều mèo</small>
+            </div>
+            <a href="https://www.tiktok.com/@haydithongdong/video/7663163731701976340" target="_blank" style="display:inline-block; margin-top:5px; color:#d62828; font-weight:bold; text-decoration:underline;">Xem clip 🎬</a>
+        </div>
+
+        <!-- Quán 4: A-Kopi -->
+        <div style="text-align: center;">
+            <div class="option" onclick="handleSelect(this, 'quan_cafe', 'A-Kopi')">
+                <img src="https://scontent.fhan14-1.fna.fbcdn.net/v/t39.30808-6/661003297_122244697256127491_3492561266808767536_n.jpg?stp=cp6_dst-jpg_tt6&cstp=mx1080x1080&cstp=s1080x1080&_nc_cat=101&ccb=1-7&_nc_sid=6ee11a" style="width:100px; height:100px; border-radius:50%; object-fit:cover;">
+                <p>A-Kopi</p>
+                <small>Quán đẹp nhưng đông khách và anh cũng chưa đi thử</small>
+            </div>
+            <a href="https://www.tiktok.com/@ig_ttlthuong/video/7333582853793516808" target="_blank" style="display:inline-block; margin-top:5px; color:#d62828; font-weight:bold; text-decoration:underline;">Xem clip 🎬</a>
+        </div>
+    </div>
+</div>
+                <br><button onclick="nextSlide()">Tiếp theo 👉</button>`,
         /* 5 */ `<h1>Nếu có tăng 2 Em muốn đi đâuuu 💕</h1>
                 <div class="options">
                     <div class="option" onclick="handleSelect(this, 'tang_2', 'Dạo biển')"><img src="https://www.dongtayxanh.com/xem/bai-bien-my-khe"><p>Dạo biển</p></div>
