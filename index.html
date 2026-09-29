@@ -32,30 +32,36 @@
     let userSelection = { ngay_di: "", dia_chi: "", quan_cafe: "Chưa chọn", tang_2: "Chưa chọn" };
 
     const slides = [
-        /* 0 */ `<h1>Em ơi đi chơi với anh nhé 🥺</h1><img src="https://media1.giphy.com/media/K6WIhJ07gwGkIAQfwN/giphy.gif" width="180"><br><br><button id="yes">Dạaa 💕</button><button id="no">No way 😭</button>`,
-        /* 1 */ `<h1>Then kiuuu 💖💖💖</h1><img src="https://media4.giphy.com/media/icIr8rk03xQI6NS67S/giphy.gif" width="200"><br><br><button onclick="nextSlide()">Ấn ở đây nè em 👉</button>`,
+        /* 0 */ `<h1>Hương Giangg ơi đi chơi với anh nhé 🥺</h1><img src="https://media1.giphy.com/media/K6WIhJ07gwGkIAQfwN/giphy.gif" width="180"><br><br><button id="yes">Dạaa 💕</button><button id="no">No way 😭</button>`,
+        /* 1 */ `<h1>Then kiuuu 💖💖💖</h1><img src="https://media4.giphy.com/media/icIr8rk03xQI6NS67S/giphy.gif" width="200"><br><br><button onclick="nextSlide()">Ấn ở đây nè Na 👉</button>`,
         /* 2 */ `<h1>Chọn ngày đi chơi nè 🗓️</h1><input type="date" id="dateInput"><br><br><button onclick="saveDate()">Tiếp theo 👉</button>`,
         /* 3 */ `<h1>Anh đón em ở đâu nè 💌</h1><input type="text" id="addressInput" placeholder="Nhập địa chỉ của em nè..."><br><br><button onclick="saveAddress()">Tiếp theo 👉</button>`,
         /* 4 */ `<h1>Quán anh tâm đắc nhưng em chọn nha ☕</h1>
                 <div class="options">
                     <div class="option" onclick="handleSelect(this, 'quan_cafe', 'Đi Lạc')">
-                        <img src="https://danang.coffee/wp-content/uploads/2025/09/mien-dau-dai-da-nang-7.jpg">
-                        <p>Đi Lạc</p><small>Nhiều mèo , nhiều mèo , nhiều mèo mèo mèo mèo 🧸 10/10 </small>
+                        <img src="https://www.facebook.com/photo/?fbid=551659806962131&set=a.503452508449528">
+                        <p>Đi Lạc</p><small>Vibe chill chill hơi chậm và buồn <a href="https://www.tiktok.com/@thanhtu_75/video/7578368909384879381?is_from_webapp=1&sender_device=pc" target="_blank" onclick="event.stopPropagation()" style="color: #d62828; text-decoration: underline;">Xem clip 🎬</a></small>
                     </div>
                     <div class="option" onclick="handleSelect(this, 'quan_cafe', 'La Yen')">
-                        <img src="">
-                        <p>La Yen</p><small>View ban công, ánh sáng mờ ảo 🌿 chưa đi thử </small>
+                        <img src="https://www.facebook.com/photo/?fbid=342590282196114&set=a.111341145321030">
+                        <p>La Yen</p><small>Nhiều đánh giá tốt nhưng anh chưa đi thử <a href="https://www.tiktok.com/@chuthudanang/video/7567712294415666453?is_from_webapp=1&sender_device=pc" target="_blank" onclick="event.stopPropagation()" style="color: #d62828; text-decoration: underline;">Xem clip 🎬</a></small>
                     </div>
-                    <div class="option" onclick="handleSelect(this, 'quan_cafe', 'Đông Đô')">
+                    <div class="option" onclick="handleSelect(this, 'quan_cafe', 'Miền dâu dại')">
                         <img src="https://scontent.fdad1-3.fna.fbcdn.net/v/t39.30808-6/511029297_122137948382653760_5726279638362431668_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=127cfc&oh=00_AfpsVneJYHe5QT93qt5D1NZymJmKkuX3m15BQyI-cqFrEA&oe=695DCD81">
-                        <p>Đông Đô</p><small>Quán đẹp, view cửa kính ☕ 6/10  </small>
+                        <p>Miền dâu dại</p><small>Quán khá chill nhiều sách nhiều mèo<a href="https://www.tiktok.com/@haydithongdong/video/7663163731701976340?is_from_webapp=1&sender_device=pc" target="_blank" onclick="event.stopPropagation()" style="color: #d62828; text-decoration: underline;">Xem clip 🎬</a></small>
+                        </div>
+                    <div class="option" onclick="handleSelect(this, 'quan_cafe', 'A-Kopi')">
+                        <img src="https://www.facebook.com/photo/?fbid=122244697250127491&set=a.1220978440761274910">
+                        <p>A-Kopi</p><small>Quán đẹp nhưng đông khách và anh cũng chưa đi thử<a href="https://www.tiktok.com/@ig_ttlthuong/video/7333582853793516808?is_from_webapp=1&sender_device=pc" target="_blank" onclick="event.stopPropagation()" style="color: #d62828; text-decoration: underline;">Xem clip 🎬</a></small>
                     </div>
                 </div><br><button onclick="nextSlide()">Tiếp theo 👉</button>`,
         /* 5 */ `<h1>Nếu có tăng 2 Em muốn đi đâuuu 💕</h1>
                 <div class="options">
-                    <div class="option" onclick="handleSelect(this, 'tang_2', 'Photobooth')"><img src="https://cdn11.dienmaycholon.vn/filewebdmclnew/DMCL21/Picture/News/News_expe_17626/17626.png?version=221925"><p>Photobooth</p></div>
+                    <div class="option" onclick="handleSelect(this, 'tang_2', 'Dạo biển')"><img src="https://www.dongtayxanh.com/xem/bai-bien-my-khe"><p>Dạo biển</p></div>
                     <div class="option" onclick="handleSelect(this, 'tang_2', 'Ăn vặt')"><img src="https://acfood.vn/image/catalog/0443.png"><p>Ăn vặt</p></div>
-                    <div class="option" onclick="handleSelect(this, 'tang_2', 'Xem phim')"><img src="https://nhaccuantonmusic.com/wp-content/uploads/2025/08/Lang-Lang-9-up18.png"><p>Xem phim</p></div>
+                    <div class="option" onclick="handleSelect(this, 'tang_2', 'Xem phim')"><img src="https://www.instagram.com/p/DdtdqMXiCLc/"><p>Xem phim</p></div>
+                     <div class="option" onclick="handleSelect(this, 'tang_2', 'Music box')"><img src="https://noithatkaraoke.vn/thi-cong-music-box/"><p>Music box</p></div>
+                      <div class="option" onclick="handleSelect(this, 'tang_2', 'Ngắm ĐN từ Sơn Trà')"><img src="https://laodong.vn/du-lich/kham-pha/da-nang-ve-dem-lung-linh-nhu-anime-nhin-tu-ban-dao-son-tra-1586894.html"><p>Ngắm ĐN từ Sơn Trà</p></div>
                 </div><br><button onclick="sendEmail()">Gửi cho anh 💖</button>`,
         /* 6 */ `<div id="finalMessage"><h1>Đang gửi lựa chọn... 💌</h1></div>`
     ];
